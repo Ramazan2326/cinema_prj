@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block style %}
+<link href="../static/css/style.css" rel="stylesheet">
+{% endblock %}
+{% block time %}{% endblock %}
+{% block content %}
+<!--<div class="container d-flex justify-content-center mt-3" style="background-color: #DCDCDC; width: 50%; height: 500px; border-radius: 20px;">-->
+<!--    <form method="post" style="margin-top: 20%;">-->
+<!--    {% csrf_token %}-->
+<!--        <div class="error_in_form">-->
+<!--            {{ form.non_field_errors }}-->
+<!--        </div>-->
+<!--        {% for item in forms %}-->
+<!--        <p><label class="form-label" for="{{ item.id_for_label }}">{{ item.label }}: </label>{{ item }}</p>-->
+<!--        <div class="error_in_form">{{ item.errors }}</div>-->
+<!--        {% endfor %}-->
+<!--&lt;!&ndash;    {{ form.as_p }}&ndash;&gt;-->
+<!--    <button type="submit">Войти</button>-->
+<!--</form>-->
+<!--</div>-->
+<form method="post">
+    {% csrf_token %}
+
+    {% for f in form %}
+    <p><label class="form-label"
+              for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+    <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+
+    <button type="submit">Регистрация</button>
+</form>
+{% endblock %}
+{% block footer %}
+{% endblock %}

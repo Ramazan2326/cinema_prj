@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/../static/css/style.css" rel="stylesheet">
+{% endblock %}
+{% block title %}
+<title>{{count}}</title>
+{% endblock %}
+{% block sidebar %}
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item" id="first-list-group">Поиск по жанрам</li>
+            {% for genre in genres %}
+                <li class="list-group-item"><a href="/genres/{{ genre.pk }}">{{ genre.get_genre_title_display }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-9">
+        {% if count == 0 %}
+            <p>Фильмов данной категории пока нет!</p>
+        {% else %}
+        {% for item in films %}
+        <div class="card mb-3">
+            <img src="/media/{{ item.poster }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="card-text">{{ item.description }}</p>
+                <p class="card-text">
+                    <small class="text-body-secondary">
+                        Актер(-ы):
+                        {% for actor in item.actors.all %}
+                            {{ actor.first_name }} {{ actor.last_name }}
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </small>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

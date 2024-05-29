@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block style %}
+    <link href="../static/css/style.css" rel="stylesheet">
+{% endblock %}
+{% block time %}{% endblock %}
+{% block content %}
+<div class="container d-flex justify-content-center mt-3" style="background-color: #DCDCDC; width: 50%; height: 500px; border-radius: 20px;">
+    <form method="post" style="margin-top: 20%;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Регистрация</button>
+</form>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

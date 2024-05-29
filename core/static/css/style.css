@@ -1,0 +1,13 @@
+.titlegroup {
+    color: green;
+}
+.list-group-item{
+    text-align: end;
+}
+.list-group-item a{
+    text-decoration: none;
+    color: black;
+}
+#first-list-group {
+    text-align: center;
+}
